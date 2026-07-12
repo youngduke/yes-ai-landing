@@ -1,0 +1,136 @@
+.admin-body {
+  background: var(--color-bg-alt);
+}
+
+.admin-main {
+  max-width: 720px;
+  padding-top: 32px;
+  padding-bottom: 80px;
+}
+
+.admin-card {
+  background: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin-bottom: 24px;
+}
+
+.admin-card h2 {
+  font-size: 15px;
+  margin: 28px 0 14px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
+}
+
+.admin-card h2:first-child {
+  margin-top: 0;
+  padding-top: 0;
+  border-top: none;
+}
+
+.admin-help {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.admin-help code {
+  background: var(--color-bg-alt);
+  padding: 1px 6px;
+  border-radius: 4px;
+}
+
+.admin-row {
+  display: flex;
+  gap: 8px;
+}
+
+.admin-row input,
+.admin-row select {
+  flex: 1;
+}
+
+.admin-card label {
+  display: block;
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 14px;
+}
+
+.admin-card input[type="text"],
+.admin-card input[type="password"],
+.admin-card select,
+.admin-card textarea {
+  display: block;
+  width: 100%;
+  margin-top: 6px;
+  padding: 10px 12px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+}
+
+.admin-status {
+  font-size: 13px;
+  margin: 10px 0 0;
+  min-height: 18px;
+}
+
+.admin-status.ok { color: var(--color-accent); }
+.admin-status.error { color: #e0453c; }
+
+.list-editor {
+  display: grid;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.list-row {
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+  background: var(--color-bg-alt);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.list-row-fields {
+  flex: 1;
+  display: grid;
+  gap: 6px;
+}
+
+.list-row-fields input {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+.list-row-remove {
+  flex: none;
+  border: none;
+  background: none;
+  color: #e0453c;
+  font-size: 13px;
+  cursor: pointer;
+  padding: 8px 4px;
+}
+
+.admin-add-btn {
+  margin-bottom: 8px;
+}
+
+.admin-save-bar {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-top: 32px;
+  padding-top: 24px;
+  border-top: 1px solid var(--color-border);
+}

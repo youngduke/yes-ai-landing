@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>관리자 편집 · 차곡차곡 AI 실전기</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="admin.css">
+</head>
+<body class="admin-body">
+
+<header class="topbar">
+  <div class="container topbar-inner">
+    <span class="logo">관리자 편집 페이지</span>
+    <a href="index.html" class="btn btn-small" target="_blank" rel="noopener">사이트 보기 ↗</a>
+  </div>
+</header>
+
+<main class="container admin-main">
+
+  <section class="admin-card">
+    <h2>1. GitHub 로그인</h2>
+    <p class="admin-help">
+      이 페이지에서 저장하면 GitHub 저장소의 <code>content.json</code>이 직접 수정되고, 1~2분 뒤 실제 사이트에 반영됩니다.<br>
+      저장하려면 <strong>이 저장소에 쓰기 권한이 있는 GitHub 토큰</strong>이 필요합니다.
+      <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">여기서 발급</a>
+      — Repository access는 이 저장소만 선택하고, Permissions &gt; Contents를 <strong>Read and write</strong>로 설정하세요.
+    </p>
+    <div class="admin-row">
+      <input type="password" id="gh-token" placeholder="github_pat_로 시작하는 토큰 붙여넣기">
+      <button id="btn-connect" class="btn btn-primary btn-small">연결</button>
+      <button id="btn-disconnect" class="btn btn-small" hidden>로그아웃</button>
+    </div>
+    <p id="auth-status" class="admin-status"></p>
+  </section>
+
+  <section class="admin-card" id="editor-section" hidden>
+    <h2>2. 폰트</h2>
+    <div class="admin-row">
+      <select id="font-select"></select>
+    </div>
+
+    <h2>3. 사이트 공통</h2>
+    <label>브라우저 탭 제목<input type="text" data-path="site.pageTitle"></label>
+    <label>상단 로고 텍스트<input type="text" data-path="site.logo"></label>
+    <label>상단 버튼 텍스트<input type="text" data-path="site.navCta"></label>
+
+    <h2>4. 히어로 영역</h2>
+    <label>강조 문구 (eyebrow)<input type="text" data-path="hero.eyebrow"></label>
+    <label>영문 태그라인<input type="text" data-path="hero.tagline"></label>
+    <label>제목 첫 줄<input type="text" data-path="hero.titleLine1"></label>
+    <label>제목 강조 줄 (색상 강조)<input type="text" data-path="hero.titleHighlight"></label>
+    <label>핵심 카피<input type="text" data-path="hero.copy"></label>
+    <label>보조 설명<input type="text" data-path="hero.sub"></label>
+    <label>일시<input type="text" data-path="hero.eventDate"></label>
+    <label>방식<input type="text" data-path="hero.eventMode"></label>
+    <label>소요 시간<input type="text" data-path="hero.eventDuration"></label>
+    <label>신청 버튼 텍스트<input type="text" data-path="hero.ctaText"></label>
+
+    <h2>5. Who is this for</h2>
+    <label>섹션 제목<input type="text" data-path="who.sectionTitle"></label>
+    <label>섹션 부제<input type="text" data-path="who.sectionSubtitle"></label>
+    <div class="list-editor" id="who-editor"></div>
+    <button type="button" class="btn btn-small admin-add-btn" data-add="who">+ 항목 추가</button>
+
+    <h2>6. Agenda</h2>
+    <label>섹션 제목<input type="text" data-path="agenda.sectionTitle"></label>
+    <label>섹션 부제<input type="text" data-path="agenda.sectionSubtitle"></label>
+    <div class="list-editor" id="agenda-editor"></div>
+    <button type="button" class="btn btn-small admin-add-btn" data-add="agenda">+ 항목 추가</button>
+
+    <h2>7. What makes it different</h2>
+    <label>섹션 제목<input type="text" data-path="diff.sectionTitle"></label>
+    <label>본문<textarea rows="3" data-path="diff.copy"></textarea></label>
+    <label>강조 문구<input type="text" data-path="diff.highlight"></label>
+
+    <h2>8. 신청 섹션</h2>
+    <label>섹션 제목<input type="text" data-path="apply.sectionTitle"></label>
+    <label>섹션 부제<input type="text" data-path="apply.sectionSubtitle"></label>
+    <label>제출 버튼 텍스트<input type="text" data-path="apply.submitText"></label>
+    <label>하단 안내문<input type="text" data-path="apply.note"></label>
+
+    <h2>9. 푸터</h2>
+    <label>제목<input type="text" data-path="footer.title"></label>
+    <label>담당자명<input type="text" data-path="footer.manager"></label>
+    <label>연락처<input type="text" data-path="footer.phone"></label>
+
+    <div class="admin-save-bar">
+      <button id="btn-reload" class="btn btn-small">저장된 내용 다시 불러오기</button>
+      <button id="btn-save" class="btn btn-primary btn-large">GitHub에 저장하기</button>
+    </div>
+    <p id="save-status" class="admin-status"></p>
+  </section>
+
+</main>
+
+<script src="content-loader.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

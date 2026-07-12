@@ -11,8 +11,8 @@
 
 <header class="topbar">
   <div class="container topbar-inner">
-    <span class="logo">차곡차곡 AI 실전기</span>
-    <a href="#apply-section" class="btn btn-small">무료 신청하기</a>
+    <span class="logo" data-bind="site.logo">차곡차곡 AI 실전기</span>
+    <a href="#apply-section" class="btn btn-small" data-bind="site.navCta">무료 신청하기</a>
   </div>
 </header>
 
@@ -21,44 +21,44 @@
   <!-- 히어로 -->
   <section class="hero">
     <div class="container hero-inner">
-      <p class="eyebrow">차곡차곡 AI 실전기 · 온라인 무료 설명회</p>
-      <p class="tagline">A Practical AI Series for Real Business</p>
-      <h1>고객경험 개선을 위한<br><span class="highlight">6주 AI 실전 과정</span></h1>
-      <p class="hero-copy">AI, 이제 <strong>'아는 것'</strong>을 넘어 <strong>'내 사업에 써먹는 것'</strong>으로</p>
-      <p class="hero-sub">원리는 사람이 배우고, 실행은 AI로 빠르게 — 진짜 결과물을 만드는 6주.</p>
+      <p class="eyebrow" data-bind="hero.eyebrow">차곡차곡 AI 실전기 · 온라인 무료 설명회</p>
+      <p class="tagline" data-bind="hero.tagline">A Practical AI Series for Real Business</p>
+      <h1><span data-bind="hero.titleLine1">고객경험 개선을 위한</span><br><span class="highlight" data-bind="hero.titleHighlight">6주 AI 실전 과정</span></h1>
+      <p class="hero-copy" data-bind="hero.copy">AI, 이제 '아는 것'을 넘어 '내 사업에 써먹는 것'으로</p>
+      <p class="hero-sub" data-bind="hero.sub">원리는 사람이 배우고, 실행은 AI로 빠르게 — 진짜 결과물을 만드는 6주.</p>
 
       <div class="event-info">
         <div class="event-info-item">
           <span class="event-info-label">일시</span>
-          <span class="event-info-value">7월 28일 (화) 오후 8시</span>
+          <span class="event-info-value" data-bind="hero.eventDate">7월 28일 (화) 오후 8시</span>
         </div>
         <div class="event-info-item">
           <span class="event-info-label">방식</span>
-          <span class="event-info-value">온라인 Zoom</span>
+          <span class="event-info-value" data-bind="hero.eventMode">온라인 Zoom</span>
         </div>
         <div class="event-info-item">
           <span class="event-info-label">소요 시간</span>
-          <span class="event-info-value">약 60분 (Q&amp;A 포함)</span>
+          <span class="event-info-value" data-bind="hero.eventDuration">약 60분 (Q&amp;A 포함)</span>
         </div>
       </div>
 
-      <a href="#apply-section" class="btn btn-primary btn-large">무료 설명회 신청하기</a>
+      <a href="#apply-section" class="btn btn-primary btn-large" data-bind="hero.ctaText">무료 설명회 신청하기</a>
     </div>
   </section>
 
   <!-- Who is this for -->
   <section class="section who-section">
     <div class="container">
-      <h2 class="section-title">Who is this for</h2>
-      <p class="section-subtitle">이런 분들께 추천합니다</p>
+      <h2 class="section-title" data-bind="who.sectionTitle">Who is this for</h2>
+      <p class="section-subtitle" data-bind="who.sectionSubtitle">이런 분들께 추천합니다</p>
 
-      <ul class="check-list">
-        <li><span class="check-icon">✓</span>AI를 자주 쓰지만, '내 일에 어떻게 써야 할지' 막막한 분</li>
-        <li><span class="check-icon">✓</span>업무 자동화는 궁금하지만, 복잡한 자동화 툴은 부담스러운 분</li>
-        <li><span class="check-icon">✓</span>배운 AI를 '실제 결과물'로 만들어 바로 써먹고 싶은 분</li>
-        <li><span class="check-icon">✓</span>고객을 더 깊이 이해해, 다시 찾고 추천하게 만들고 싶은 분</li>
-        <li><span class="check-icon">✓</span>광고비 없이 '고객경험'으로 차별화하고 싶은 분</li>
-        <li><span class="check-icon">✓</span>신규 고객을 더 만들고 싶은데 무엇부터 손대야 할지 막막한 분</li>
+      <ul class="check-list" id="who-list">
+        <li><span class="check-icon">✓</span><span>AI를 자주 쓰지만, '내 일에 어떻게 써야 할지' 막막한 분</span></li>
+        <li><span class="check-icon">✓</span><span>업무 자동화는 궁금하지만, 복잡한 자동화 툴은 부담스러운 분</span></li>
+        <li><span class="check-icon">✓</span><span>배운 AI를 '실제 결과물'로 만들어 바로 써먹고 싶은 분</span></li>
+        <li><span class="check-icon">✓</span><span>고객을 더 깊이 이해해, 다시 찾고 추천하게 만들고 싶은 분</span></li>
+        <li><span class="check-icon">✓</span><span>광고비 없이 '고객경험'으로 차별화하고 싶은 분</span></li>
+        <li><span class="check-icon">✓</span><span>신규 고객을 더 만들고 싶은데 무엇부터 손대야 할지 막막한 분</span></li>
       </ul>
     </div>
   </section>
@@ -66,10 +66,10 @@
   <!-- Agenda -->
   <section class="section agenda-section">
     <div class="container">
-      <h2 class="section-title">Agenda</h2>
-      <p class="section-subtitle">60분 동안 이런 내용을 다룹니다</p>
+      <h2 class="section-title" data-bind="agenda.sectionTitle">Agenda</h2>
+      <p class="section-subtitle" data-bind="agenda.sectionSubtitle">60분 동안 이런 내용을 다룹니다</p>
 
-      <ol class="agenda-list">
+      <ol class="agenda-list" id="agenda-list">
         <li class="agenda-item">
           <span class="agenda-num">01</span>
           <div>
@@ -126,21 +126,17 @@
   <!-- What makes it different -->
   <section class="section diff-section">
     <div class="container diff-inner">
-      <h2 class="section-title">What makes it different</h2>
-      <p class="diff-copy">
-        'AI 버튼 누르는 법'을 알려주는 수업이 아닙니다.<br>
-        고객이 다시 찾고, 매출로 이어지게 만드는 <strong>방법</strong>을 배우고,<br>
-        그걸 <strong>AI</strong>로 빠르게 실행합니다.
-      </p>
-      <p class="diff-highlight">원리는 <span class="accent">사람</span>이 배우고, 실행은 <span class="accent">AI</span>로 빠르게.</p>
+      <h2 class="section-title" data-bind="diff.sectionTitle">What makes it different</h2>
+      <p class="diff-copy" data-bind="diff.copy">'AI 버튼 누르는 법'을 알려주는 수업이 아닙니다. 고객이 다시 찾고, 매출로 이어지게 만드는 방법을 배우고, 그걸 AI로 빠르게 실행합니다.</p>
+      <p class="diff-highlight" data-bind="diff.highlight">원리는 사람이 배우고, 실행은 AI로 빠르게.</p>
     </div>
   </section>
 
   <!-- 신청 섹션 -->
   <section class="section apply-section" id="apply-section">
     <div class="container apply-inner">
-      <h2 class="section-title">지금 신청하세요</h2>
-      <p class="section-subtitle">선착순 사전 신청 · 참가비 무료</p>
+      <h2 class="section-title" data-bind="apply.sectionTitle">지금 신청하세요</h2>
+      <p class="section-subtitle" data-bind="apply.sectionSubtitle">선착순 사전 신청 · 참가비 무료</p>
 
       <form id="apply-form" class="apply-form" novalidate>
 
@@ -192,8 +188,8 @@
           <span class="error-msg" data-error-for="privacy"></span>
         </div>
 
-        <button type="submit" class="btn btn-primary btn-large btn-full">무료 설명회 신청 완료하기</button>
-        <p class="form-note">신청 내용은 담당자 이메일로 안전하게 전달됩니다.</p>
+        <button type="submit" class="btn btn-primary btn-large btn-full" data-bind="apply.submitText">무료 설명회 신청 완료하기</button>
+        <p class="form-note" data-bind="apply.note">신청 내용은 담당자 이메일로 안전하게 전달됩니다.</p>
       </form>
 
       <div id="success-message" class="success-message" hidden>
@@ -208,12 +204,13 @@
 
 <footer class="footer">
   <div class="container footer-inner">
-    <p class="footer-title">차곡차곡 AI 실전기</p>
-    <p>담당자 : 위대한 경영자 허소미</p>
-    <p>문의 : <a href="tel:010-5502-7553">010-5502-7553</a></p>
+    <p class="footer-title" data-bind="footer.title">차곡차곡 AI 실전기</p>
+    <p>담당자 : <span data-bind="footer.manager">위대한 경영자 허소미</span></p>
+    <p>문의 : <a href="tel:010-5502-7553" id="footer-phone-link" data-bind="footer.phone">010-5502-7553</a></p>
   </div>
 </footer>
 
+<script src="content-loader.js"></script>
 <script src="script.js"></script>
 </body>
 </html>
