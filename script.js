@@ -1,0 +1,89 @@
+// ============================================
+// 신청 폼 제출 처리 — Google Sheets 연동
+// apps-script.gs 안내대로 Apps Script를 배포한 뒤,
+// 발급된 "웹 앱 URL"을 아래 SUBMIT_ENDPOINT에 붙여넣으세요.
+// 비워두면 콘솔에만 데이터가 출력되고 화면에는 완료 메시지만 표시됩니다.
+// ============================================
+const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbz4I--mJh6u4ZtTaqHIOmAZZ6J6xoXcf2ZzuZIZ1rTmT127vzrcjARZnxZXCLdR-V57eQ/exec";
+
+const form = document.getElementById("apply-form");
+const successMessage = document.getElementById("success-message");
+
+const validators = {
+  name: (v) => v.trim().length > 0,
+  phone: (v) => /^[0-9\-+ ]{9,}$/.test(v.trim()),
+  email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
+  "ai-level": (v) => v.trim().length > 0,
+  privacy: (v, el) => el.checked,
+};
+
+const errorMessages = {
+  name: "이름을 입력해주세요.",
+  phone: "연락처를 정확히 입력해주세요.",
+  email: "이메일 형식이 올바르지 않습니다.",
+  "ai-level": "AI 활용 수준을 선택해주세요.",
+  privacy: "개인정보 수집·이용에 동의해주세요.",
+};
+
+function setError(field, message) {
+  const group = document.querySelector(`[name="${field}"]`).closest(".form-group");
+  const errorEl = form.querySelector(`[data-error-for="${field}"]`);
+  if (message) {
+    group.classList.add("invalid");
+    if (errorEl) errorEl.textContent = message;
+  } else {
+    group.classList.remove("invalid");
+    if (errorEl) errorEl.textContent = "";
+  }
+}
+
+function validateForm(formData) {
+  let isValid = true;
+  for (const field of Object.keys(validators)) {
+    const el = form.querySelector(`[name="${field}"]`);
+    const value = formData.get(field) || "";
+    const valid = validators[field](value, el);
+    setError(field, valid ? "" : errorMessages[field]);
+    if (!valid) isValid = false;
+  }
+  return isValid;
+}
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formData = new FormData(form);
+
+  if (!validateForm(formData)) {
+    const firstInvalid = form.querySelector(".invalid input, .invalid select");
+    if (firstInvalid) firstInvalid.focus();
+    return;
+  }
+
+  const payload = Object.fromEntries(formData.entries());
+  payload.privacy = form.querySelector("#privacy").checked;
+
+  const submitBtn = form.querySelector('button[type="submit"]');
+  submitBtn.disabled = true;
+  submitBtn.textContent = "제출 중...";
+
+  try {
+    if (SUBMIT_ENDPOINT) {
+      // Content-Type을 text/plain으로 보내야 Apps Script 웹앱에서
+      // CORS preflight(OPTIONS) 없이 바로 doPost로 받을 수 있습니다.
+      await fetch(SUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload),
+      });
+    } else {
+      console.log("신청 데이터 (SUBMIT_ENDPOINT 미설정):", payload);
+    }
+    form.hidden = true;
+    successMessage.hidden = false;
+    successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
+  } catch (err) {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "무료 설명회 신청 완료하기";
+    alert("제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
+  }
+});
