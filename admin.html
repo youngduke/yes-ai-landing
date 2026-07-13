@@ -51,14 +51,28 @@
       <label class="color-field">기본 글자색<span class="color-input-wrap"><input type="color" data-path="colors.text"><output></output></span></label>
       <label class="color-field">흐린 글자색<span class="color-input-wrap"><input type="color" data-path="colors.textMuted"><output></output></span></label>
       <label class="color-field">테두리 색상<span class="color-input-wrap"><input type="color" data-path="colors.border"><output></output></span></label>
+      <label class="color-field">버튼 글자색<span class="color-input-wrap"><input type="color" data-path="colors.buttonText"><output></output></span></label>
     </div>
 
-    <h2>4. 사이트 공통</h2>
+    <h2>4. 글자 크기</h2>
+    <p class="admin-help">각 항목의 글자 크기를 px 단위로 직접 조절할 수 있습니다.</p>
+    <div class="color-grid">
+      <label class="color-field">강조 문구 (eyebrow)<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.eyebrow"><span class="size-unit">px</span></span></label>
+      <label class="color-field">메인 제목<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.heroTitle"><span class="size-unit">px</span></span></label>
+      <label class="color-field">핵심 카피<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.heroCopy"><span class="size-unit">px</span></span></label>
+      <label class="color-field">보조 설명<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.heroSub"><span class="size-unit">px</span></span></label>
+      <label class="color-field">섹션 라벨 (작은 소제목)<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.sectionTitle"><span class="size-unit">px</span></span></label>
+      <label class="color-field">섹션 제목 (큰 소제목)<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.sectionHeading"><span class="size-unit">px</span></span></label>
+      <label class="color-field">본문 글자<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.body"><span class="size-unit">px</span></span></label>
+      <label class="color-field">버튼 글자<span class="size-input-wrap"><input type="number" min="8" max="80" data-path="sizes.button"><span class="size-unit">px</span></span></label>
+    </div>
+
+    <h2>5. 사이트 공통</h2>
     <label>브라우저 탭 제목<input type="text" data-path="site.pageTitle"></label>
     <label>상단 로고 텍스트<input type="text" data-path="site.logo"></label>
     <label>상단 버튼 텍스트<input type="text" data-path="site.navCta"></label>
 
-    <h2>5. 히어로 영역</h2>
+    <h2>6. 히어로 영역</h2>
     <label>강조 문구 (eyebrow)<input type="text" data-path="hero.eyebrow"></label>
     <label>영문 태그라인<input type="text" data-path="hero.tagline"></label>
     <label>제목 첫 줄<input type="text" data-path="hero.titleLine1"></label>
@@ -70,30 +84,30 @@
     <label>소요 시간<input type="text" data-path="hero.eventDuration"></label>
     <label>신청 버튼 텍스트<input type="text" data-path="hero.ctaText"></label>
 
-    <h2>6. Who is this for</h2>
+    <h2>7. Who is this for</h2>
     <label>섹션 제목<input type="text" data-path="who.sectionTitle"></label>
     <label>섹션 부제<input type="text" data-path="who.sectionSubtitle"></label>
     <div class="list-editor" id="who-editor"></div>
     <button type="button" class="btn btn-small admin-add-btn" data-add="who">+ 항목 추가</button>
 
-    <h2>7. Agenda</h2>
+    <h2>8. Agenda</h2>
     <label>섹션 제목<input type="text" data-path="agenda.sectionTitle"></label>
     <label>섹션 부제<input type="text" data-path="agenda.sectionSubtitle"></label>
     <div class="list-editor" id="agenda-editor"></div>
     <button type="button" class="btn btn-small admin-add-btn" data-add="agenda">+ 항목 추가</button>
 
-    <h2>8. What makes it different</h2>
+    <h2>9. What makes it different</h2>
     <label>섹션 제목<input type="text" data-path="diff.sectionTitle"></label>
     <label>본문<textarea rows="3" data-path="diff.copy"></textarea></label>
     <label>강조 문구<input type="text" data-path="diff.highlight"></label>
 
-    <h2>9. 신청 섹션</h2>
+    <h2>10. 신청 섹션</h2>
     <label>섹션 제목<input type="text" data-path="apply.sectionTitle"></label>
     <label>섹션 부제<input type="text" data-path="apply.sectionSubtitle"></label>
     <label>제출 버튼 텍스트<input type="text" data-path="apply.submitText"></label>
     <label>하단 안내문<input type="text" data-path="apply.note"></label>
 
-    <h2>10. 푸터</h2>
+    <h2>11. 푸터</h2>
     <label>제목<input type="text" data-path="footer.title"></label>
     <label>담당자명<input type="text" data-path="footer.manager"></label>
     <label>연락처<input type="text" data-path="footer.phone"></label>

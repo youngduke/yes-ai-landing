@@ -7,7 +7,18 @@
     "bgAlt": "#17637d",
     "text": "#0f0c18",
     "textMuted": "#142603",
-    "border": "#dfe7e5"
+    "border": "#dfe7e5",
+    "buttonText": "#ffffff"
+  },
+  "sizes": {
+    "eyebrow": 14,
+    "heroTitle": 36,
+    "heroCopy": 19,
+    "heroSub": 15,
+    "sectionTitle": 13,
+    "sectionHeading": 24,
+    "body": 15,
+    "button": 16
   },
   "site": {
     "pageTitle": "YES CLUB",

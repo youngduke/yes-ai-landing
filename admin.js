@@ -103,6 +103,12 @@ function initColorInputs() {
   });
 }
 
+function initSizeInputs() {
+  document.querySelectorAll('.size-input-wrap input[type="number"]').forEach((el) => {
+    el.addEventListener("input", () => applySizes(collectFormData().sizes));
+  });
+}
+
 function addWhoRow(value = "") {
   const container = document.getElementById("who-editor");
   const row = document.createElement("div");
@@ -143,6 +149,7 @@ function populateForm(data) {
   document.getElementById("font-select").value = data.fontFamily || "system";
   applyFont(data.fontFamily);
   applyColors(data.colors);
+  applySizes(data.sizes);
   refreshColorOutputs();
 
   document.getElementById("who-editor").innerHTML = "";
@@ -227,6 +234,7 @@ function updateConnectedUI(connected) {
 document.addEventListener("DOMContentLoaded", () => {
   initFontSelect();
   initColorInputs();
+  initSizeInputs();
 
   document.querySelector('[data-add="who"]').addEventListener("click", () => addWhoRow());
   document.querySelector('[data-add="agenda"]').addEventListener("click", () => addAgendaRow());

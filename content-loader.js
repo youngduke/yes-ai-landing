@@ -58,12 +58,31 @@ const COLOR_VARS = {
   text: "--color-text",
   textMuted: "--color-text-muted",
   border: "--color-border",
+  buttonText: "--color-button-text",
 };
 
 function applyColors(colors) {
   if (!colors) return;
   Object.entries(COLOR_VARS).forEach(([key, cssVar]) => {
     if (colors[key]) document.documentElement.style.setProperty(cssVar, colors[key]);
+  });
+}
+
+const SIZE_VARS = {
+  eyebrow: "--size-eyebrow",
+  heroTitle: "--size-hero-title",
+  heroCopy: "--size-hero-copy",
+  heroSub: "--size-hero-sub",
+  sectionTitle: "--size-section-title",
+  sectionHeading: "--size-section-heading",
+  body: "--size-body",
+  button: "--size-button",
+};
+
+function applySizes(sizes) {
+  if (!sizes) return;
+  Object.entries(SIZE_VARS).forEach(([key, cssVar]) => {
+    if (sizes[key]) document.documentElement.style.setProperty(cssVar, `${sizes[key]}px`);
   });
 }
 
@@ -129,6 +148,7 @@ async function initContent() {
     const data = await res.json();
     applyFont(data.fontFamily);
     applyColors(data.colors);
+    applySizes(data.sizes);
     bindText(data);
     renderWhoList(data.who?.items);
     renderAgendaList(data.agenda?.items);

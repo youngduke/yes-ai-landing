@@ -15,9 +15,18 @@
   --color-accent: #2f5d50;
   --color-border: #e6e3de;
   --color-white: #ffffff;
+  --color-button-text: #ffffff;
   --font-sans: -apple-system, BlinkMacSystemFont, "Pretendard", "Noto Sans KR", "Malgun Gothic", sans-serif;
   --radius: 14px;
   --max-width: 880px;
+  --size-eyebrow: 14px;
+  --size-hero-title: 36px;
+  --size-hero-copy: 19px;
+  --size-hero-sub: 15px;
+  --size-section-title: 13px;
+  --size-section-heading: 24px;
+  --size-body: 15px;
+  --size-button: 16px;
 }
 
 * { box-sizing: border-box; }
@@ -79,7 +88,7 @@ body {
 
 .btn-primary {
   background: var(--color-primary);
-  color: var(--color-white);
+  color: var(--color-button-text);
   box-shadow: 0 6px 20px rgba(255, 122, 61, 0.35);
 }
 
@@ -95,7 +104,7 @@ body {
 
 .btn-large {
   padding: 16px 36px;
-  font-size: 16px;
+  font-size: var(--size-button);
 }
 
 .btn-full {
@@ -117,7 +126,7 @@ body {
 }
 
 .eyebrow {
-  font-size: 14px;
+  font-size: var(--size-eyebrow);
   font-weight: 700;
   color: var(--color-primary);
   margin: 0 0 8px;
@@ -131,7 +140,7 @@ body {
 }
 
 .hero h1 {
-  font-size: clamp(28px, 5vw, 42px);
+  font-size: var(--size-hero-title);
   line-height: 1.35;
   margin: 0 0 20px;
   letter-spacing: -0.02em;
@@ -142,12 +151,12 @@ body {
 }
 
 .hero-copy {
-  font-size: clamp(17px, 2.5vw, 20px);
+  font-size: var(--size-hero-copy);
   margin: 0 0 8px;
 }
 
 .hero-sub {
-  font-size: 15px;
+  font-size: var(--size-hero-sub);
   color: var(--color-text-muted);
   margin: 0 0 36px;
 }
@@ -190,7 +199,7 @@ body {
 }
 
 .section-title {
-  font-size: 13px;
+  font-size: var(--size-section-title);
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -200,7 +209,7 @@ body {
 }
 
 .section-subtitle {
-  font-size: clamp(20px, 3vw, 26px);
+  font-size: var(--size-section-heading);
   font-weight: 700;
   text-align: center;
   margin: 0 0 40px;
@@ -228,7 +237,7 @@ body {
   border: 1px solid var(--color-border);
   border-radius: var(--radius);
   padding: 18px 20px;
-  font-size: 15px;
+  font-size: var(--size-body);
 }
 
 .check-icon {
@@ -284,7 +293,7 @@ body {
 .agenda-item p {
   margin: 0;
   color: var(--color-text-muted);
-  font-size: 14px;
+  font-size: var(--size-body);
 }
 
 /* Diff section */
@@ -303,7 +312,7 @@ body {
 }
 
 .diff-copy {
-  font-size: clamp(16px, 2.5vw, 19px);
+  font-size: var(--size-body);
   line-height: 1.7;
   margin: 0 0 32px;
 }
