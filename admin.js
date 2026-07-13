@@ -41,8 +41,16 @@ function setByPath(obj, path, value) {
   target[keys[keys.length - 1]] = value;
 }
 
-async function githubRequest(method, body) {
-  const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${CONTENT_PATH}?ref=${BRANCH}`, {
+const STATUS_HINTS = {
+  401: "토큰이 유효하지 않습니다. 토큰이 만료되었거나 잘못 복사되었을 수 있어요. 새로 발급해서 다시 연결해주세요.",
+  403: "토큰에 이 저장소 쓰기 권한이 없습니다. 토큰 발급 시 Repository access에서 chagok-ai-landing을 선택하고, Permissions > Contents를 Read and write로 설정했는지 확인해주세요.",
+  404: "저장소나 파일을 찾을 수 없습니다. 토큰의 Repository access에 chagok-ai-landing이 포함되어 있는지 확인해주세요.",
+  409: "다른 곳에서 먼저 저장되어 내용이 어긋났습니다. '저장된 내용 다시 불러오기'를 누른 뒤 다시 수정해서 저장해주세요.",
+  422: "요청 데이터 형식에 문제가 있습니다.",
+};
+
+async function githubRequest(method, path, body) {
+  const res = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}${path}`, {
     method,
     headers: {
       Authorization: `token ${getToken()}`,
@@ -53,9 +61,20 @@ async function githubRequest(method, body) {
   });
   if (!res.ok) {
     const err = await res.json().catch(() => ({}));
-    throw new Error(err.message || `GitHub API 오류 (${res.status})`);
+    const hint = STATUS_HINTS[res.status];
+    const base = err.message || `GitHub API 오류 (${res.status})`;
+    throw new Error(hint ? `${base} — ${hint}` : base);
   }
   return res.json();
+}
+
+async function checkWriteAccess() {
+  try {
+    const repo = await githubRequest("GET", "");
+    return repo.permissions?.push === true;
+  } catch {
+    return null;
+  }
 }
 
 function initFontSelect() {
@@ -154,12 +173,22 @@ function collectFormData() {
 async function loadFromGitHub() {
   const authStatus = document.getElementById("auth-status");
   try {
-    const file = await githubRequest("GET");
+    const file = await githubRequest("GET", `/contents/${CONTENT_PATH}?ref=${BRANCH}`);
     currentSha = file.sha;
     const data = JSON.parse(b64DecodeUnicode(file.content));
     populateForm(data);
     document.getElementById("editor-section").hidden = false;
-    setStatus(authStatus, `연결됨 — 최신 내용을 불러왔습니다.`, "ok");
+
+    const hasWriteAccess = await checkWriteAccess();
+    if (hasWriteAccess === false) {
+      setStatus(
+        authStatus,
+        "연결됨 — 최신 내용을 불러왔습니다. 다만 이 토큰은 쓰기 권한이 없어 저장은 실패합니다. 토큰 발급 시 Permissions > Contents를 Read and write로 다시 설정해주세요.",
+        "error"
+      );
+    } else {
+      setStatus(authStatus, "연결됨 — 최신 내용을 불러왔습니다.", "ok");
+    }
   } catch (err) {
     setStatus(authStatus, `불러오기 실패: ${err.message}`, "error");
   }
@@ -173,7 +202,7 @@ async function saveToGitHub() {
   try {
     const data = collectFormData();
     const content = b64EncodeUnicode(JSON.stringify(data, null, 2));
-    const result = await githubRequest("PUT", {
+    const result = await githubRequest("PUT", `/contents/${CONTENT_PATH}`, {
       message: "Update content via admin panel",
       content,
       sha: currentSha,
