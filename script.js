@@ -12,14 +12,12 @@ const successMessage = document.getElementById("success-message");
 const validators = {
   name: (v) => v.trim().length > 0,
   phone: (v) => /^[0-9\-+ ]{9,}$/.test(v.trim()),
-  "ai-level": (v) => v.trim().length > 0,
   privacy: (v, el) => el.checked,
 };
 
 const errorMessages = {
   name: "이름을 입력해주세요.",
   phone: "연락처를 정확히 입력해주세요.",
-  "ai-level": "AI 활용 수준을 선택해주세요.",
   privacy: "개인정보 수집·이용에 동의해주세요.",
 };
 
