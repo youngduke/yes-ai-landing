@@ -300,12 +300,19 @@ body {
 .agenda-item h3 {
   margin: 0 0 6px;
   font-size: 17px;
+  color: #ffffff;
 }
 
 .agenda-item p {
   margin: 0;
-  color: var(--color-text-muted);
+  color: #ffffff;
   font-size: var(--size-body);
+}
+
+/* agenda-section은 카드 없이 페이지 배경 위에 바로 놓이므로
+   제목도 함께 흰색으로 맞춘다. */
+.agenda-section .section-subtitle {
+  color: #ffffff;
 }
 
 /* Diff section */
