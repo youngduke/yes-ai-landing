@@ -1,6 +1,6 @@
 {
   "colors": {
-    "primary": "#ff7a3d",
+    "primary": "#c2ff3d",
     "primaryDark": "#893b1a",
     "accent": "#2f5d50",
     "bg": "#2f83a7",
@@ -88,5 +88,5 @@
     "manager": "위대한 경영자 허소미",
     "phone": "010-5502-7553"
   },
-  "fontFamily": "system"
+  "fontFamily": "gowun-dodum"
 }
