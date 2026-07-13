@@ -12,7 +12,6 @@ const successMessage = document.getElementById("success-message");
 const validators = {
   name: (v) => v.trim().length > 0,
   phone: (v) => /^[0-9\-+ ]{9,}$/.test(v.trim()),
-  email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()),
   "ai-level": (v) => v.trim().length > 0,
   privacy: (v, el) => el.checked,
 };
@@ -20,7 +19,6 @@ const validators = {
 const errorMessages = {
   name: "이름을 입력해주세요.",
   phone: "연락처를 정확히 입력해주세요.",
-  email: "이메일 형식이 올바르지 않습니다.",
   "ai-level": "AI 활용 수준을 선택해주세요.",
   privacy: "개인정보 수집·이용에 동의해주세요.",
 };
@@ -63,6 +61,7 @@ form.addEventListener("submit", async (e) => {
   payload.privacy = form.querySelector("#privacy").checked;
 
   const submitBtn = form.querySelector('button[type="submit"]');
+  const originalBtnText = submitBtn.textContent;
   submitBtn.disabled = true;
   submitBtn.textContent = "제출 중...";
 
@@ -83,7 +82,7 @@ form.addEventListener("submit", async (e) => {
     successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
   } catch (err) {
     submitBtn.disabled = false;
-    submitBtn.textContent = "무료 설명회 신청 완료하기";
+    submitBtn.textContent = originalBtnText;
     alert("제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.");
   }
 });
