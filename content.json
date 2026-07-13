@@ -8,7 +8,7 @@
     "text": "#0f0c18",
     "textMuted": "#142603",
     "border": "#dfe7e5",
-    "buttonText": "#ffffff",
+    "buttonText": "#000000",
     "cardBg": "#ffffff"
   },
   "sizes": {
@@ -37,6 +37,8 @@
     "eventDate": "매주 일요일 오전 7시",
     "eventMode": "온라인 Zoom",
     "eventDuration": "60분",
+    "eventLabel4": "시험 내용",
+    "eventValue4": "매주 복습용 20문제",
     "ctaText": "멤버 신청하기"
   },
   "who": {
