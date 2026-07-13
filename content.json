@@ -8,7 +8,7 @@
     "text": "#0f0c18",
     "textMuted": "#142603",
     "border": "#dfe7e5",
-    "buttonText": "#000000",
+    "buttonText": "#e4f500",
     "cardBg": "#ffffff"
   },
   "sizes": {
@@ -31,7 +31,7 @@
   "hero": {
     "eyebrow": "Let's make our lives better even the best",
     "tagline": " ",
-    "titleLine1": "I'm the owner of my life",
+    "titleLine1": " ",
     "titleHighlight": "Your daily management shapes your life",
     "copy": "영어와 경영으로 '아름다운 사람'이 되자",
     "sub": " ",
@@ -40,7 +40,7 @@
     "eventDuration": "60분",
     "eventLabel4": "시험 내용",
     "eventValue4": "매주 복습용 20문제",
-    "ctaText": "멤버 신청하기"
+    "ctaText": "멤버로 가입하기"
   },
   "who": {
     "sectionTitle": "Who gonna be our members",
